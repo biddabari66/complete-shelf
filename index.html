@@ -1194,6 +1194,31 @@
       text-align: right;
     }
 
+    .library-link {
+      align-self: center;
+      padding: 9px 16px;
+      border: 1px solid rgba(244, 238, 230, 0.28);
+      border-radius: 999px;
+      background: rgba(23, 26, 36, 0.42);
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: auto;
+      backdrop-filter: blur(8px);
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms var(--ease-out);
+    }
+
+    .library-link:hover {
+      border-color: var(--accent);
+      background: rgba(200, 112, 70, 0.16);
+      transform: translateY(-2px);
+    }
+
     .editorial-identity strong {
       font-family: var(--serif);
       font-size: clamp(1.2rem, 1.8vw, 1.7rem);
@@ -1611,6 +1636,7 @@
         <strong>Working Volumes</strong>
         <span>Seven field guides for making</span>
       </div>
+      <a class="library-link" href="library.html">Free Library →</a>
       <div class="editorial-index">
         <span>Edition 02 · 2026</span>
         <span id="palette-label">Ultramarine · bone · copper</span>

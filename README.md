@@ -25,6 +25,9 @@ The collection is organized around seven tools for modern creative work:
 - Procedural cloth, foil, paper, page-edge, wood, roughness, normal, and shadow textures.
 - Deterministic shelf-to-detail transitions with exact endpoints so reparenting the selected volume never produces a last-frame jump.
 - Accessible HTML controls and status announcements layered over the WebGL scene.
+- A **Free Library** page (`library.html`, linked from the top-right of the shelf) with eight complete,
+  public-domain novels — real EPUBs and cover art sourced from [Project Gutenberg](https://www.gutenberg.org),
+  downloadable with no account required.
 
 ## How it is made
 
@@ -67,10 +70,22 @@ No install or build step is required. An internet connection is needed for the p
 
 ```text
 complete-shelf/
-├── index.html   # Complete production experience
-├── PROMPT.md    # Portable recreation and remix brief
-└── README.md    # Project overview and implementation notes
+├── index.html          # Complete production experience (the 3D shelf)
+├── library.html         # Free Library — real public-domain e-books
+├── ebooks/               # Downloaded EPUBs (Project Gutenberg, public domain)
+├── assets/
+│   ├── complete-shelf-preview.jpg
+│   └── covers/           # Downloaded cover art for the Free Library
+├── vercel.json           # Static hosting config (headers, clean URLs)
+├── PROMPT.md             # Portable recreation and remix brief
+└── README.md             # Project overview and implementation notes
 ```
+
+## Deploy
+
+This is a static site — no build step. On Vercel: import the repo (or run `vercel deploy`
+from this folder) with no framework preset selected; `vercel.json` handles headers and
+clean URLs. Any other static host (Netlify, GitHub Pages, S3 + CloudFront) works the same way.
 
 ## Design notes
 

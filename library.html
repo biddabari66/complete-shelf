@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171a24">
+  <meta
+    name="description"
+    content="A free library of eight complete, public-domain novels — real books you can download as EPUB and keep, no account required."
+  >
+  <title>Free Library — Working Volumes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #171a24;
+      --paper-deep: #10131b;
+      --paper-pale: #f1eadf;
+      --ink: #f4eee6;
+      --ink-soft: #b9b4ae;
+      --walnut: #3a2118;
+      --rule: rgba(244, 238, 230, 0.16);
+      --accent: #c87046;
+      --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+      --mono: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --ease-out: cubic-bezier(0.2, 0.72, 0.24, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 42px 96px;
+    }
+
+    header.top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .identity strong {
+      display: block;
+      font-size: clamp(1.02rem, 1.55vw, 1.36rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .identity span {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 19px;
+      min-height: 42px;
+      border: 1px solid rgba(244, 238, 230, 0.28);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms var(--ease-out);
+    }
+
+    .back-link:hover {
+      border-color: var(--ink);
+      background: rgba(244, 238, 230, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .intro {
+      max-width: 640px;
+      margin: 34px 0 4px;
+    }
+
+    .intro h1 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .intro p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .intro p a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 112, 70, 0.4);
+    }
+
+    .intro p a:hover {
+      border-color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 28px 24px;
+      margin-top: 44px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card__cover {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+      border-radius: 3px;
+      background: var(--paper-deep);
+      box-shadow: 0 18px 34px rgba(6, 6, 10, 0.45);
+    }
+
+    .card__cover img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms var(--ease-out);
+    }
+
+    .card:hover .card__cover img {
+      transform: scale(1.035);
+    }
+
+    .card__author {
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card__title {
+      margin: 2px 0 0;
+      font-size: 1.18rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .card__blurb {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .card__actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      min-height: 38px;
+      border: 1px solid rgba(244, 238, 230, 0.28);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms var(--ease-out);
+    }
+
+    .download-button:hover {
+      border-color: var(--accent);
+      background: rgba(200, 112, 70, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .source-link {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid transparent;
+    }
+
+    .source-link:hover {
+      color: var(--ink);
+      border-color: var(--rule);
+    }
+
+    footer.credit {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+    }
+
+    footer.credit a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer.credit a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 28px 20px 64px;
+      }
+
+      header.top {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="identity">
+        <strong>Working Volumes</strong>
+        <span>Free Library · Public Domain</span>
+      </div>
+      <a class="back-link" href="index.html">← Back to the shelf</a>
+    </header>
+
+    <div class="intro">
+      <h1>Eight complete novels, free to keep.</h1>
+      <p>
+        Real books, not previews — eight full public-domain novels sourced from
+        <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>,
+        downloadable as EPUB with no account, email, or payment required.
+      </p>
+    </div>
+
+    <main class="grid" id="library-grid" aria-label="Free e-book library"></main>
+
+    <footer class="credit">
+      <p>
+        Texts and cover images courtesy of
+        <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>,
+        a library of over 75,000 free eBooks in the U.S. public domain. Each EPUB retains its
+        original Project Gutenberg license header. No copyrighted material is hosted here.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const BOOKS = [
+      {
+        id: 1342,
+        slug: "pride-and-prejudice",
+        title: "Pride and Prejudice",
+        author: "Jane Austen",
+        blurb: "Wit, class, and the slow negotiation of love in Regency England — one of the great opening lines in the English novel."
+      },
+      {
+        id: 84,
+        slug: "frankenstein",
+        title: "Frankenstein; or, The Modern Prometheus",
+        author: "Mary Shelley",
+        blurb: "A scientist's creation turns against him, in the book that invented modern science fiction."
+      },
+      {
+        id: 11,
+        slug: "alices-adventures-in-wonderland",
+        title: "Alice's Adventures in Wonderland",
+        author: "Lewis Carroll",
+        blurb: "A girl follows a rabbit down a hole into pure nonsense logic — still the strangest children's book ever written."
+      },
+      {
+        id: 1661,
+        slug: "the-adventures-of-sherlock-holmes",
+        title: "The Adventures of Sherlock Holmes",
+        author: "Arthur Conan Doyle",
+        blurb: "Twelve cases that built the modern detective story, narrated by the doctor at 221B Baker Street."
+      },
+      {
+        id: 2701,
+        slug: "moby-dick",
+        title: "Moby-Dick; or, The Whale",
+        author: "Herman Melville",
+        blurb: "Captain Ahab's pursuit of the white whale — an American epic of obsession, at sea."
+      },
+      {
+        id: 345,
+        slug: "dracula",
+        title: "Dracula",
+        author: "Bram Stoker",
+        blurb: "Letters, diaries, and telegrams assemble the vampire novel every other vampire story answers to."
+      },
+      {
+        id: 64317,
+        slug: "the-great-gatsby",
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        blurb: "Jazz-age wealth, longing, and the green light across the bay — the great American novel, in miniature."
+      },
+      {
+        id: 174,
+        slug: "the-picture-of-dorian-gray",
+        title: "The Picture of Dorian Gray",
+        author: "Oscar Wilde",
+        blurb: "A portrait ages instead of its subject, in Wilde's only novel — vanity, sin, and consequence."
+      }
+    ];
+
+    const grid = document.getElementById("library-grid");
+
+    grid.innerHTML = BOOKS.map((book) => `
+      <article class="card">
+        <div class="card__cover">
+          <img
+            src="assets/covers/${book.slug}.jpg"
+            alt="Cover of ${book.title} by ${book.author}"
+            loading="lazy"
+            width="300"
+            height="450"
+          >
+        </div>
+        <p class="card__author">${book.author}</p>
+        <h2 class="card__title">${book.title}</h2>
+        <p class="card__blurb">${book.blurb}</p>
+        <div class="card__actions">
+          <a class="download-button" href="ebooks/${book.slug}.epub" download>
+            Download EPUB
+          </a>
+          <a class="source-link" href="https://www.gutenberg.org/ebooks/${book.id}" target="_blank" rel="noopener">
+            Read online ↗
+          </a>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>
